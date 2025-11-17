@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niedertattoo - Tetováló Stúdió</title>
+    <meta name="description" content="Niedertattoo tetováló stúdió - Minőségi tetoválások Budapesten. Profi tetoválóművészek, biztonságos környezet, egyedi designok.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== ALAP STÍLUSOK ===== */
+        :root {
+            --black: #111111;
+            --red: #cc0000;
+            --white: #ffffff;
+            --dark-gray: #1a1a1a;
+            --light-gray: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background-color: var(--black);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--red);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: #aa0000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--red);
+            color: var(--red);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--red);
+            color: var(--white);
+        }
+        
+        /* ===== FELSŐ SAV ===== */
+        .top-bar {
+            background-color: var(--black);
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+            font-size: 0.85rem;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .review-counter {
+            color: #ccc;
+        }
+        
+        .review-counter span {
+            color: var(--red);
+            font-weight: 600;
+        }
+        
+        .social-links-top {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links-top a {
+            color: #ccc;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links-top a:hover {
+            color: var(--red);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== NYELV VÁLTÓ ===== */
+        .language-switcher {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            padding: 8px 15px;
+            background-color: rgba(17, 17, 17, 0.7);
+            color: var(--white);
+            border: 1px solid var(--red);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background-color: var(--red);
+        }
+        
+        .lang-btn:hover {
+            background-color: var(--red);
+        }
+        
+        /* ===== NAVIGÁCIÓ ===== */
+        .navbar {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            z-index: 1000;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(204, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .navbar-brand span {
+            color: var(--red);
+        }
+        
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+        }
+        
+        .navbar-nav li {
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .navbar-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        .navbar-nav a:hover {
+            color: var(--red);
+        }
+        
+        .navbar-nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--red);
+            transition: width 0.3s ease;
+        }
+        
+        .navbar-nav a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* ===== HERO SZAKASZ ===== */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.8)), url('https://images.unsplash.com/photo-1605723519720-19b84d1a0d56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 110px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+        
+        /* ===== SZOLGÁLTATÁSOK ===== */
+        .services {
+            background-color: var(--dark-gray);
+            position: relative;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .service-card {
+            background-color: var(--black);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #333;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--red);
+            box-shadow: 0 15px 30px rgba(204, 0, 0, 0.2);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--red);
+            margin-bottom: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        /* ===== GALÉRIA ===== */
+        .gallery {
+            background-color: var(--black);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(204, 0, 0, 0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* ===== IDŐPONTFOGLALÁS ===== */
+        .booking {
+            background-color: var(--dark-gray);
+        }
+        
+        .booking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .booking-info {
+            background: var(--black);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .booking-details {
+            margin-bottom: 30px;
+        }
+        
+        .booking-details p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .booking-details i {
+            margin-right: 15px;
+            color: var(--red);
+            width: 20px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .booking-form {
+            background: var(--black);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #1a1a1a;
+            color: var(--white);
+        }
+        
+        .form-control:focus {
+            border-color: var(--red) !important;
+            box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.2) !important;
+            outline: none;
+        }
+        
+        .form-control::placeholder {
+            color: #777 !important;
+            opacity: 1 !important;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        /* ===== ÉRTÉKELÉSEK ===== */
+        .reviews {
+            background-color: var(--black);
+        }
+        
+        .reviews-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        
+        .reviews-stats {
+            background-color: var(--dark-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .stats-item {
+            margin-bottom: 20px;
+        }
+        
+        .stats-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .stats-bar {
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .stats-fill {
+            height: 100%;
+            background-color: var(--red);
+            border-radius: 4px;
+        }
+        
+        .total-reviews {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .total-reviews h3 {
+            font-size: 2rem;
+            color: var(--red);
+            margin-bottom: 5px;
+        }
+        
+        .reviews-carousel-container {
+            position: relative;
+        }
+        
+        .reviews-carousel {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .review-card {
+            background-color: var(--dark-gray);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+        }
+        
+        .review-card.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .review-card.prev {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--red);
+        }
+        
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-info h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .review-stars {
+            color: var(--red);
+            margin-bottom: 10px;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background-color: var(--red);
+        }
+        
+        /* ===== KAPCSOLAT ===== */
+        .contact {
+            background-color: var(--dark-gray);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background: var(--black);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-details i {
+            margin-right: 15px;
+            color: var(--red);
+            width: 20px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--red);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links-contact a:hover {
+            background-color: #aa0000;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== GOOGLE MAPS ===== */
+        .map-container {
+            margin-top: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+        }
+        
+        /* ===== LÁBLÉC ===== */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .footer-logo span {
+            color: var(--red);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .footer-links h3,
+        .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--white);
+        }
+        
+        .footer-links h3:after,
+        .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--red);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--red);
+            padding-left: 5px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: #ccc;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--red);
+            width: 16px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--red);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        
+        /* ===== ANIMÁCIÓK ===== */
+        .floating-btns {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--red);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(204, 0, 0, 0.3);
+            border: 2px solid var(--black);
+        }
+        
+        .floating-btn:hover {
+            background-color: var(--black);
+            color: var(--red);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(204, 0, 0, 0.4);
+        }
+        
+        .scroll-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== FORM ANIMÁCIÓK ===== */
+        .booking-form, .contact-form {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-animation {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(204, 0, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .booking-form:hover .form-animation,
+        .contact-form:hover .form-animation {
+            left: 100%;
+        }
+        
+        /* ===== RESZPONZÍV DESIGN ===== */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .reviews-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .floating-btns {
+                right: 30px;
+                bottom: 30px;
+            }
+            
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .navbar-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 100px 30px 30px;
+                transition: all 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .navbar-nav.active {
+                right: 0;
+            }
+            
+            .navbar-nav li {
+                margin: 15px 0;
+            }
+            
+            .language-switcher {
+                top: 120px;
+                right: 15px;
+            }
+            
+            .hero {
+                margin-top: 150px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btns .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .floating-btns {
+                right: 15px;
+                bottom: 15px;
+            }
+            
+            .floating-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+            
+            .reviews-carousel {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Felső sáv -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="review-counter">
+                <span data-hu="6 értékelés" data-en="6 reviews">6 értékelés</span> | ⭐⭐⭐⭐⭐
+            </div>
+            <div class="social-links-top">
+                <a href="https://instagram.com/niedertattoo" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://facebook.com/niedertattoo" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://tiktok.com/@niedertattoo" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nyelv váltó -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="hu">HU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <!-- Navigáció -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="navbar-brand">Nieder<span>tattoo</span></a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="navbar-nav">
+                <li><a href="#home" data-hu="Kezdőlap" data-en="Home">Kezdőlap</a></li>
+                <li><a href="#services" data-hu="Szolgáltatások" data-en="Services">Szolgáltatások</a></li>
+                <li><a href="#gallery" data-hu="Galéria" data-en="Gallery">Galéria</a></li>
+                <li><a href="#booking" data-hu="Időpontfoglalás" data-en="Booking">Időpontfoglalás</a></li>
+                <li><a href="#reviews" data-hu="Értékelések" data-en="Reviews">Értékelések</a></li>
+                <li><a href="#contact" data-hu="Kapcsolat" data-en="Contact">Kapcsolat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero szekció -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 data-hu="Niedertattoo" data-en="Niedertattoo">Niedertattoo</h1>
+            <p data-hu="Prémium tetováló stúdió Budapesten. Minőségi tetoválások, biztonságos környezet, egyedi designok." data-en="Premium tattoo studio in Budapest. Quality tattoos, safe environment, unique designs.">Prémium tetováló stúdió Budapesten. Minőségi tetoválások, biztonságos környezet, egyedi designok.</p>
+            <div class="hero-btns">
+                <a href="#booking" class="btn" data-hu="Időpontfoglalás" data-en="Book Appointment">Időpontfoglalás</a>
+                <a href="#gallery" class="btn btn-outline" data-hu="Munkáink" data-en="Our Work">Munkáink</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Szolgáltatások -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 data-hu="Szolgáltatásaink" data-en="Our Services">Szolgáltatásaink</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-hu="Egyedi Tetoválások" data-en="Custom Tattoos">Egyedi Tetoválások</h3>
+                        <p data-hu="Egyedi designok, amelyek teljes mértékben tükrözik a személyiségedet és elképzeléseidet." data-en="Custom designs that fully reflect your personality and ideas.">Egyedi designok, amelyek teljes mértékben tükrözik a személyiségedet és elképzeléseidet.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-hu="Felújítás & Fedés" data-en="Restoration & Cover-up">Felújítás & Fedés</h3>
+                        <p data-hu="Régi, elmosódott tetoválások felújítása, vagy nem kívánt tetoválások fedése új designnal." data-en="Restoration of old, faded tattoos or covering unwanted tattoos with new designs.">Régi, elmosódott tetoválások felújítása, vagy nem kívánt tetoválások fedése új designnal.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-hu="Design & Tervezés" data-en="Design & Planning">Design & Tervezés</h3>
+                        <p data-hu="Részletes konzultáció és tervezés, hogy a tetoválás tökéletesen illeszkedjen elképzeléseidhez." data-en="Detailed consultation and planning to ensure the tattoo perfectly fits your ideas.">Részletes konzultáció és tervezés, hogy a tetoválás tökéletesen illeszkedjen elképzeléseidhez.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galéria -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2 data-hu="Galéria" data-en="Gallery">Galéria</h2>
+            <div class="gallery-grid">
+                <!-- 10 kép a galériába -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1605723519720-19b84d1a0d56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611088139553-5d91e4ac0237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1611088409698-45e59382de0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1593536122598-4d680dd6ee89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1548611639-e67d2f5d1613?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1577988313256-deb4f5d48c58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1548625149-fc4a55cf9493?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596436889106-be35e8435c76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1571687949925-64d85c4f2c6a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1629736555294-40f5f361b8e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tetoválás minta 10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Időpontfoglalás -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2 data-hu="Időpontfoglalás" data-en="Book Appointment">Időpontfoglalás</h2>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <h3 data-hu="Információk" data-en="Information">Információk</h3>
+                    <div class="booking-details">
+                        <p><i class="fas fa-clock"></i> <span data-hu="H-P: 10:00 - 18:00" data-en="Mon-Fri: 10:00 - 18:00">H-P: 10:00 - 18:00</span></p>
+                        <p><i class="fas fa-euro-sign"></i> <span data-hu="Árak: 50.000 Ft-tól" data-en="Prices: from 50.000 HUF">Árak: 50.000 Ft-tól</span></p>
+                        <p><i class="fas fa-calendar-check"></i> <span data-hu="Előzetes egyeztetés szükséges" data-en="Prior consultation required">Előzetes egyeztetés szükséges</span></p>
+                        <p><i class="fas fa-stethoscope"></i> <span data-hu="Higiénikus környezet" data-en="Hygienic environment">Higiénikus környezet</span></p>
+                    </div>
+                </div>
+                <div class="booking-form">
+                    <div class="form-animation"></div>
+                    <h3 data-hu="Foglalj időpontot" data-en="Book Your Appointment">Foglalj időpontot</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name" data-hu="Név" data-en="Name">Név</label>
+                            <input type="text" id="name" class="form-control" placeholder data-hu="Add meg a neved" data-en="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-hu="Email" data-en="Email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder data-hu="Add meg az email címed" data-en="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-hu="Telefon" data-en="Phone">Telefon</label>
+                            <input type="tel" id="phone" class="form-control" placeholder data-hu="Add meg a telefonszámod" data-en="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date" data-hu="Kívánt dátum" data-en="Preferred Date">Kívánt dátum</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-hu="Üzenet" data-en="Message">Üzenet</label>
+                            <textarea id="message" class="form-control" placeholder data-hu="Írd le, milyen tetoválást szeretnél" data-en="Describe what kind of tattoo you want" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-hu="Időpontfoglalás" data-en="Book Appointment">Időpontfoglalás</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Értékelések -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 data-hu="Ügyfél értékelések" data-en="Customer Reviews">Ügyfél értékelések</h2>
+            <div class="reviews-container">
+                <div class="reviews-stats">
+                    <h3 data-hu="Értékelés statisztikák" data-en="Review Statistics">Értékelés statisztikák</h3>
+                    <div class="stats-item">
+                        <div class="stats-label">
+                            <span data-hu="Kiváló" data-en="Excellent">Kiváló</span>
+                            <span>83%</span>
+                        </div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" style="width: 83%"></div>
+                        </div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-label">
+                            <span data-hu="Nagyon jó" data-en="Very Good">Nagyon jó</span>
+                            <span>12%</span>
+                        </div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" style="width: 12%"></div>
+                        </div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-label">
+                            <span data-hu="Átlagos" data-en="Average">Átlagos</span>
+                            <span>3%</span>
+                        </div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" style="width: 3%"></div>
+                        </div>
+                    </div>
+                    <div class="stats-item">
+                        <div class="stats-label">
+                            <span data-hu="Rossz" data-en="Poor">Rossz</span>
+                            <span>2%</span>
+                        </div>
+                        <div class="stats-bar">
+                            <div class="stats-fill" style="width: 2%"></div>
+                        </div>
+                    </div>
+                    <div class="total-reviews">
+                        <h3>4.8</h3>
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p data-hu="6 értékelés alapján" data-en="Based on 6 reviews">6 értékelés alapján</p>
+                    </div>
+                </div>
+                <div class="reviews-carousel-container">
+                    <div class="reviews-carousel">
+                        <!-- 6 értékelés -->
+                        <div class="review-card active">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Kovács Anna">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Kovács Anna" data-en="Anna Kovács">Kovács Anna</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Csodálatos munka, profi hozzáállás! A tetoválásom tökéletesen sikerült, pontosan azt kaptam, amit elképzeltem." data-en="Amazing work, professional attitude! My tattoo turned out perfectly, exactly what I imagined.">Csodálatos munka, profi hozzáállás! A tetoválásom tökéletesen sikerült, pontosan azt kaptam, amit elképzeltem.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Nagy Bence">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Nagy Bence" data-en="Bence Nagy">Nagy Bence</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Nagyon elégedett vagyok a munkájukkal. A stúdió tiszta, a művészek kedvesek és profik. Mindenkinek ajánlom!" data-en="Very satisfied with their work. The studio is clean, the artists are friendly and professional. I recommend it to everyone!">Nagyon elégedett vagyok a munkájukkal. A stúdió tiszta, a művészek kedvesek és profik. Mindenkinek ajánlom!</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Tóth Eszter">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Tóth Eszter" data-en="Eszter Tóth">Tóth Eszter</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Első tetoválásom volt, és nem lehetett volna jobb élmény. Türelmesen magyaráztak mindent, és fantasztikus eredményt kaptam." data-en="It was my first tattoo and it couldn't have been a better experience. They explained everything patiently and I got a fantastic result.">Első tetoválásom volt, és nem lehetett volna jobb élmény. Türelmesen magyaráztak mindent, és fantasztikus eredményt kaptam.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Szabó Dávid">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Szabó Dávid" data-en="Dávid Szabó">Szabó Dávid</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Fantasztikus tetoválóművészek! A design pontosan olyan lett, mint amit szerettem volna. Profi környezet, barátságos légkör." data-en="Fantastic tattoo artists! The design turned out exactly as I wanted. Professional environment, friendly atmosphere.">Fantasztikus tetoválóművészek! A design pontosan olyan lett, mint amit szerettem volna. Profi környezet, barátságos légkör.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Horváth Zsófia">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Horváth Zsófia" data-en="Zsófia Horváth">Horváth Zsófia</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Régi tetoválásomat újították fel, és csodálatosan sikerült! Olyan mintha új lenne. Nagyon hálás vagyok a munkájukért." data-en="They restored my old tattoo and it turned out amazing! It looks like new. I'm very grateful for their work.">Régi tetoválásomat újították fel, és csodálatosan sikerült! Olyan mintha új lenne. Nagyon hálás vagyok a munkájukért.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Varga Gábor">
+                                </div>
+                                <div class="review-info">
+                                    <h4 data-hu="Varga Gábor" data-en="Gábor Varga">Varga Gábor</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p data-hu="Kiváló minőségű tetoválás, precíz munka. Az árak korrektek, a szolgáltatás profi. Biztosan visszatérek!" data-en="Excellent quality tattoo, precise work. The prices are fair, the service is professional. I will definitely be back!">Kiváló minőségű tetoválás, precíz munka. Az árak korrektek, a szolgáltatás profi. Biztosan visszatérek!</p>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <div class="carousel-dot active" data-index="0"></div>
+                        <div class="carousel-dot" data-index="1"></div>
+                        <div class="carousel-dot" data-index="2"></div>
+                        <div class="carousel-dot" data-index="3"></div>
+                        <div class="carousel-dot" data-index="4"></div>
+                        <div class="carousel-dot" data-index="5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kapcsolat -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 data-hu="Kapcsolat" data-en="Contact">Kapcsolat</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 data-hu="Elérhetőségeink" data-en="Contact Us">Elérhetőségeink</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 1214 Budapest, Kossuth Lajos u. 142</p>
+                        <p><i class="fas fa-phone"></i> +36-70-360-1844</p>
+                        <p><i class="fas fa-envelope"></i> info@niedertattoo.hu</p>
+                        <p><i class="fas fa-clock"></i> <span data-hu="H-P: 10:00 - 18:00" data-en="Mon-Fri: 10:00 - 18:00">H-P: 10:00 - 18:00</span></p>
+                    </div>
+                    <div class="social-links-contact">
+                        <a href="https://instagram.com/niedertattoo" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/niedertattoo" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@niedertattoo" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="booking-form">
+                    <div class="form-animation"></div>
+                    <h3 data-hu="Küldj üzenetet" data-en="Send Message">Küldj üzenetet</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="contact-name" data-hu="Név" data-en="Name">Név</label>
+                            <input type="text" id="contact-name" class="form-control" placeholder data-hu="Add meg a neved" data-en="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email" data-hu="Email" data-en="Email">Email</label>
+                            <input type="email" id="contact-email" class="form-control" placeholder data-hu="Add meg az email címed" data-en="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message" data-hu="Üzenet" data-en="Message">Üzenet</label>
+                            <textarea id="contact-message" class="form-control" placeholder data-hu="Írd le az üzeneted..." data-en="Enter your message..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-hu="Üzenet küldése" data-en="Send Message">Üzenet küldése</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2695.693359466873!2d19.051215315627245!3d47.49877997917748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dc402cc7e7c5%3A0x6b6c3e5e0e934a6a!2sKossuth%20Lajos%20u.%20142%2C%201214%20Budapest!5e0!3m2!1shu!2shu!4v1686754327893!5m2!1shu!2shu" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lábléc -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Nieder<span>tattoo</span></div>
+                    <p data-hu="Budapest legjobb tetováló stúdiója, ahol minőség és kreativitás találkozik. Profi tetoválóművészek, biztonságos környezet." data-en="Budapest's best tattoo studio where quality and creativity meet. Professional tattoo artists, safe environment.">Budapest legjobb tetováló stúdiója, ahol minőség és kreativitás találkozik. Profi tetoválóművészek, biztonságos környezet.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/niedertattoo" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/niedertattoo" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://tiktok.com/@niedertattoo" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h3 data-hu="Kapcsolat" data-en="Contact">Kapcsolat</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1214 Budapest, Kossuth Lajos u. 142</p>
+                    <p><i class="fas fa-phone"></i> +36-70-360-1844</p>
+                    <p><i class="fas fa-envelope"></i> info@niedertattoo.hu</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Niedertattoo. <span data-hu="Minden jog fenntartva." data-en="All rights reserved.">Minden jog fenntartva.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lebegő gombok -->
+    <div class="floating-btns">
+        <div class="floating-btn scroll-to-top" id="scrollToTop">
+            <i class="fas fa-chevron-up"></i>
+        </div>
+        <div class="floating-btn" id="quickBooking">
+            <i class="fas fa-calendar-plus"></i>
+        </div>
+        <div class="floating-btn" id="quickContact">
+            <i class="fas fa-envelope"></i>
+        </div>
+    </div>
+
+    <script>
+        // Nyelv váltó funkció
+        const langButtons = document.querySelectorAll('.lang-btn');
+        let currentLang = 'hu';
+        
+        langButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                switchLanguage(lang);
+                
+                // Aktív gomb frissítése
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Minden nyelvfüggő elem frissítése
+            document.querySelectorAll('[data-hu]').forEach(element => {
+                if (element.hasAttribute('data-' + lang)) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.setAttribute('placeholder', element.getAttribute('data-' + lang));
+                    } else {
+                        element.textContent = element.getAttribute('data-' + lang);
+                    }
+                }
+            });
+        }
+        
+        // Navigáció scroll effekt
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Felfelé gomb megjelenítése
+            const scrollToTop = document.getElementById('scrollToTop');
+            if (window.scrollY > 300) {
+                scrollToTop.classList.add('show');
+            } else {
+                scrollToTop.classList.remove('show');
+            }
+        });
+
+        // Mobil menü toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navbarNav = document.querySelector('.navbar-nav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navbarNav.classList.toggle('active');
+            this.innerHTML = navbarNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Menü bezárása kattintáskor
+        document.querySelectorAll('.navbar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Űrlap elküldése
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(currentLang === 'hu' ? 'Köszönjük az időpontfoglalást! Hamarosan felvesszük veled a kapcsolatot.' : 'Thank you for your booking! We will contact you soon.');
+            this.reset();
+        });
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(currentLang === 'hu' ? 'Köszönjük üzeneted! Hamarosan felvesszük veled a kapcsolatot.' : 'Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+
+        // Sima görgetés anchor linkekhez
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Értékelés karuszel - JAVÍTOTT VERZIÓ
+        const reviewCards = document.querySelectorAll('.review-card');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentReview = 0;
+        let autoSlideInterval;
+        
+        function showReview(index) {
+            // Előző kártya elrejtése
+            reviewCards[currentReview].classList.remove('active');
+            
+            // Új kártya megjelenítése
+            reviewCards[index].classList.add('active');
+            
+            // Frissítjük a pontokat
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentReview = index;
+        }
+        
+        // Pontok kattintás eseményei
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                showReview(index);
+                resetAutoSlide();
+            });
+        });
+        
+        // Automatikus váltás - 4 másodpercenként
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                let nextReview = currentReview + 1;
+                if (nextReview >= reviewCards.length) {
+                    nextReview = 0;
+                }
+                showReview(nextReview);
+            }, 4000); // 4000 ms = 4 másodperc
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        
+        // Kezdeti beállítás
+        showReview(0);
+        startAutoSlide();
+        
+        // Felfelé gomb funkció
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Gyors gombok funkciói
+        document.getElementById('quickBooking').addEventListener('click', function() {
+            document.getElementById('booking').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+        
+        document.getElementById('quickContact').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Touch swipe támogatás az értékelések karuszelhez
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        const reviewsCarousel = document.querySelector('.reviews-carousel');
+        
+        reviewsCarousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        reviewsCarousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            
+            if (touchEndX < touchStartX - swipeThreshold) {
+                // Balra swipe - következő értékelés
+                let nextReview = currentReview + 1;
+                if (nextReview >= reviewCards.length) {
+                    nextReview = 0;
+                }
+                showReview(nextReview);
+                resetAutoSlide();
+            }
+            
+            if (touchEndX > touchStartX + swipeThreshold) {
+                // Jobbra swipe - előző értékelés
+                let prevReview = currentReview - 1;
+                if (prevReview < 0) {
+                    prevReview = reviewCards.length - 1;
+                }
+                showReview(prevReview);
+                resetAutoSlide();
+            }
+        }
+    </script>
+</body>
+</html>
